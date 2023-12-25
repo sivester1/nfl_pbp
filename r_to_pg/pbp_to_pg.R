@@ -1,6 +1,11 @@
-#!/c/Progra~1/R/R-4.0.3/bin/Rscript
+#!/usr/local/bin/Rscript
 
-.libPaths(c("C:/Users/steph/OneDrive/Documents/R/win-library/4.0", .libPaths()))
+#.libPaths(c("C:/Users/steph/OneDrive/Documents/R/win-library/4.0", .libPaths()))
+
+install.packages('nflreadr')
+install.packages('nflfastR')
+install.packages('rjson')
+install.packages('RPostgreSQL')
 
 library(nflreadr)
 library(nflfastR)
