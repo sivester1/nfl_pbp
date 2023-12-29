@@ -58,7 +58,7 @@ select
   		, DENSE_RANK() over (partition by detailed_play_type order by play_count desc ) as play_rank
 	from c)
   select 
-    offense
+    defense
     , detailed_play_type
     , success_rate
     , avg_epa
@@ -66,4 +66,4 @@ select
     , avg_yds
     , case when detailed_play_type in ('_fumble','_sack') then play_rank else sr_rank end as rank
       from d
-  order by offense, detailed_play_type;
+  order by defense, detailed_play_type;

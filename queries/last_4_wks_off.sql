@@ -12,12 +12,6 @@ with raw_data as (
             when down=4 and yards_gained >= ydstogo then 1
             else 0 end as success 
 		, epa
-        , play_type 
-        , pass_length
-        , pass_location
-        , run_location
-    from plays_2023 
-    where play_type in ('run','pass')
     and sp=0
     order by play_id
 ),
