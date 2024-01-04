@@ -188,4 +188,4 @@ CREATE OR REPLACE VIEW pbp.yards_per_game
     b.points AS opp_points
    FROM staged_data s
      JOIN adjusted_points a ON s.team = a.team AND s.week = a.week
-     JOIN adjusted_points b ON s.team = b.team AND s.week = b.week;
+     JOIN adjusted_points b ON s.opponent = b.team AND s.week = b.week;
