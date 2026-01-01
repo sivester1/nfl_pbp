@@ -1,3 +1,5 @@
+## Fetch R datasets and load into Postgres
+
 Add this to your rc file to easily reload pbp data week-to-week
 ```
 function load_pbp() {
