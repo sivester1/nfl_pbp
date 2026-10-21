@@ -30,7 +30,7 @@ CREATE OR REPLACE VIEW pbp.ypp AS
          SELECT fo.season,
             fo.posteam,
                 CASE
-                    WHEN lh.team_home::text = fo.posteam THEN lh.team_away
+                    WHEN lh.team_home = fo.posteam THEN lh.team_away
                     ELSE la.team_home
                 END AS defteam,
             fo.week,
@@ -39,11 +39,11 @@ CREATE OR REPLACE VIEW pbp.ypp AS
             sum(fo.rec_attempt) AS pass,
             sum(fo.rec_yards_gained) AS pass_yds
            FROM ff_opp fo
-             LEFT JOIN lookahead lh ON fo.season = lh.season AND fo.week = lh.schedule_week::double precision AND fo.posteam = lh.team_home::text
-             LEFT JOIN lookahead la ON fo.season = la.season AND fo.week = la.schedule_week::double precision AND fo.posteam = la.team_away::text
+             LEFT JOIN lookahead lh ON fo.season = lh.season AND fo.week = lh.schedule_week::double precision AND fo.posteam = lh.team_home
+             LEFT JOIN lookahead la ON fo.season = la.season AND fo.week = la.schedule_week::double precision AND fo.posteam = la.team_away
           GROUP BY fo.season, fo.posteam, (
                 CASE
-                    WHEN lh.team_home::text = fo.posteam THEN lh.team_away
+                    WHEN lh.team_home = fo.posteam THEN lh.team_away
                     ELSE la.team_home
                 END), fo.week
         ), ttl_wk AS (

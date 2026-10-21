@@ -6,8 +6,8 @@ CREATE OR REPLACE VIEW pbp.bazn_past_5_wks AS
     hosr.play_type,
     round(bayzn(hosr.off_sr, adsr.def_sr), 5) AS bazn
    FROM lookahead la
-     JOIN off_sr_past_5_wks hosr ON hosr.posteam = la.team_home::text AND hosr.season = la.season
-     JOIN def_sr_past_5_wks adsr ON adsr.defteam = la.team_away::text AND adsr.season = la.season
+     JOIN off_sr_past_5_wks hosr ON hosr.posteam = la.team_home AND hosr.season = la.season
+     JOIN def_sr_past_5_wks adsr ON adsr.defteam = la.team_away AND adsr.season = la.season
   WHERE hosr.play_type = adsr.play_type
 UNION ALL
  SELECT la.season,
@@ -17,6 +17,6 @@ UNION ALL
     aosr.play_type,
     round(bayzn(aosr.off_sr, hdsr.def_sr), 5) AS bazn
    FROM lookahead la
-     LEFT JOIN off_sr_past_5_wks aosr ON aosr.posteam = la.team_away::text AND aosr.season = la.season
-     LEFT JOIN def_sr_past_5_wks hdsr ON hdsr.defteam = la.team_home::text AND hdsr.season = la.season
+     LEFT JOIN off_sr_past_5_wks aosr ON aosr.posteam = la.team_away AND aosr.season = la.season
+     LEFT JOIN def_sr_past_5_wks hdsr ON hdsr.defteam = la.team_home AND hdsr.season = la.season
   WHERE hdsr.play_type = aosr.play_type;
