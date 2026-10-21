@@ -154,13 +154,14 @@ for (i in seq_along(data_list)) {
   
   message(paste0("Processing table: ", tb_name))
 
-  tryCatch(
+  table_created <- tryCatch(
     {
       sql_truncate <- paste("TRUNCATE ", tb_name)
       res <- dbSendQuery(conn = conn, statement = sql_truncate)
+      FALSE
     },
     error = function(e)
-    { 
+    {
       message(e$message)
       message(" Attempting to create table!")
       output <- dbWriteTable(conn, c("pbp",tb_name), data, row.names=FALSE)
@@ -169,15 +170,16 @@ for (i in seq_along(data_list)) {
       } else {
         message(" Table create failed!")
       }
-      quit(save = "no", status = 1, runLast = FALSE)
-      # new table so skipping write steps below
-      next
+      TRUE
     }
   )
-  
+
+  # new table already has the data loaded, so skip the append step below
+  if (table_created) next
+
   # load the data
   output <- dbWriteTable(conn, tb_name, data, row.names = FALSE, append = TRUE)
-  
+
   if (output == TRUE) {
     message("  Update Successful")
     } else {
