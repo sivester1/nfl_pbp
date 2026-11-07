@@ -15,9 +15,9 @@ CREATE OR REPLACE VIEW pbp.def_sr_past_5_wks AS
             defense_success.success_cnt,
             defense_success.failure_cnt,
             defense_success.plays_cnt,
-            max(defense_success.week) OVER (PARTITION BY defense_success.season) AS season_max_week
+            max(defense_success.week) OVER (PARTITION BY defense_success.season, defense_success.defteam) AS team_max_week
            FROM defense_success) ds
-  WHERE ds.week > (ds.season_max_week - 5)
+  WHERE ds.week > (ds.team_max_week - 5)
   GROUP BY ds.season, ds.defteam, ds.play_type
 UNION ALL
  SELECT ds.season,
@@ -36,7 +36,7 @@ UNION ALL
             defense_success.success_cnt,
             defense_success.failure_cnt,
             defense_success.plays_cnt,
-            max(defense_success.week) OVER (PARTITION BY defense_success.season) AS season_max_week
+            max(defense_success.week) OVER (PARTITION BY defense_success.season, defense_success.defteam) AS team_max_week
            FROM defense_success) ds
-  WHERE ds.week > (ds.season_max_week - 5)
+  WHERE ds.week > (ds.team_max_week - 5)
   GROUP BY ds.season, ds.defteam;

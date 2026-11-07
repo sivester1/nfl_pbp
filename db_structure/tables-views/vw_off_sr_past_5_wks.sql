@@ -15,9 +15,9 @@ CREATE OR REPLACE VIEW pbp.off_sr_past_5_wks AS
             offense_success.success_cnt,
             offense_success.failure_cnt,
             offense_success.plays_cnt,
-            max(offense_success.week) OVER (PARTITION BY offense_success.season) AS season_max_week
+            max(offense_success.week) OVER (PARTITION BY offense_success.season, offense_success.posteam) AS team_max_week
            FROM offense_success) os
-  WHERE os.week > (os.season_max_week - 5)
+  WHERE os.week > (os.team_max_week - 5)
   GROUP BY os.season, os.posteam, os.play_type
 UNION ALL
  SELECT os.season,
@@ -36,7 +36,7 @@ UNION ALL
             offense_success.success_cnt,
             offense_success.failure_cnt,
             offense_success.plays_cnt,
-            max(offense_success.week) OVER (PARTITION BY offense_success.season) AS season_max_week
+            max(offense_success.week) OVER (PARTITION BY offense_success.season, offense_success.posteam) AS team_max_week
            FROM offense_success) os
-  WHERE os.week > (os.season_max_week - 5)
+  WHERE os.week > (os.team_max_week - 5)
   GROUP BY os.season, os.posteam;
