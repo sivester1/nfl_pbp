@@ -7,15 +7,15 @@ CREATE OR REPLACE VIEW pbp.defense_success AS
             p.down,
             p.yards_gained,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 1
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 1
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 1
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 1
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     ELSE 0
                 END AS success,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 0
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 0
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 0
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 0
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     ELSE 1
@@ -35,15 +35,15 @@ CREATE OR REPLACE VIEW pbp.defense_success AS
             p.down,
             p.yards_gained,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 1
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 1
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 1
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 1
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     ELSE 0
                 END AS success,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 0
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 0
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 0
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 0
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     ELSE 1
@@ -63,15 +63,15 @@ CREATE OR REPLACE VIEW pbp.defense_success AS
             p.down,
             p.yards_gained,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 1
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 1
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 1
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 1
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     ELSE 0
                 END AS success,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 0
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 0
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 0
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 0
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     ELSE 1
@@ -91,15 +91,15 @@ CREATE OR REPLACE VIEW pbp.defense_success AS
             p.down,
             p.yards_gained,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 1
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 1
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 1
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 1
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     ELSE 0
                 END AS success,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 0
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 0
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 0
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 0
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     ELSE 1
@@ -119,15 +119,15 @@ CREATE OR REPLACE VIEW pbp.defense_success AS
             p.down,
             p.yards_gained,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 1
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 1
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 1
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 1
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 1
                     ELSE 0
                 END AS success,
                 CASE
-                    WHEN p.down = 1::double precision AND p.yards_gained > (p.ydstogo / 2::double precision) THEN 0
-                    WHEN p.down = 2::double precision AND p.yards_gained > (p.ydstogo * 0.7::double precision) THEN 0
+                    WHEN p.down = 1::double precision AND p.yards_gained >= (p.ydstogo * 0.4::double precision) THEN 0
+                    WHEN p.down = 2::double precision AND p.yards_gained >= (p.ydstogo * 0.6::double precision) THEN 0
                     WHEN p.down = 3::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     WHEN p.down = 4::double precision AND p.yards_gained >= p.ydstogo THEN 0
                     ELSE 1
